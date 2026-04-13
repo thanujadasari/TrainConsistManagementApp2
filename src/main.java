@@ -1,38 +1,32 @@
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class TrainConsistManagementApp {
+
     public static void main(String[] args) {
+        System.out.println("==============================================");
+        System.out.println(" UC5 - Preserve Insertion Order of Bogies ");
+        System.out.println("==============================================\n");
 
-        LinkedList<String> consist = new LinkedList<>();
+        // LinkedHashSet preserves order and ensures uniqueness
+        Set<String> formation = new LinkedHashSet<>();
 
+        // Adding bogies in a specific sequence
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
 
-        consist.add("Engine");
-        consist.add("Sleeper");
-        consist.add("AC");
-        consist.add("Cargo");
-        consist.add("Guard");
+        // Attempting to add a duplicate bogie
+        // The Set interface will automatically ignore this entry
+        formation.add("Sleeper");
 
-        System.out.println("Initial Train Formation: " + consist);
+        System.out.println("Final Train Formation:");
+        System.out.println(formation);
 
-        // 3. Insert a Pantry Car at position 2 (index 2)
-        // LinkedList allows efficient insertion in the middle
-        consist.add(2, "Pantry Car");
-        System.out.println("After Adding Pantry Car at pos 2: " + consist);
+        System.out.println("\nNote:");
+        System.out.println("LinkedHashSet preserves insertion order and removes duplicates automatically.");
 
-
-        String removedFirst = consist.removeFirst();
-        String removedLast = consist.removeLast();
-
-        System.out.println("Detached: " + removedFirst + " and " + removedLast);
-
-
-        System.out.println("Final Ordered Train Consist: " + consist);
-
-
-        System.out.println("\n--- Current Sequence ---");
-        for (int i = 0; i < consist.size(); i++) {
-            System.out.println("Position " + (i + 1) + ": " + consist.get(i));
-        }
+        System.out.println("\nUC5 formation setup completed...");
     }
 }
