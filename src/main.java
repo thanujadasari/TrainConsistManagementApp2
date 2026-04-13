@@ -1,34 +1,38 @@
 import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
 
 public class TrainConsistManagementApp {
-
     public static void main(String[] args) {
-        System.out.println("==========================================");
-        System.out.println(" UC3 - Track Unique Bogie IDs ");
-        System.out.println("==========================================\n");
 
-        // Initialize a Set to store unique bogie IDs
-        // HashSet automatically handles deduplication
-        Set<String> bogies = new HashSet<>();
+        LinkedList<String> consist = new LinkedList<>();
 
-        // Adding unique bogie IDs
-        bogies.add("BG101");
-        bogies.add("BG102");
-        bogies.add("BG103");
-        bogies.add("BG104");
 
-        // Attempting to add duplicate entries
-        // These will be internally ignored by the HashSet
-        bogies.add("BG101"); // Duplicate entry
-        bogies.add("BG102"); // Duplicate entry
+        consist.add("Engine");
+        consist.add("Sleeper");
+        consist.add("AC");
+        consist.add("Cargo");
+        consist.add("Guard");
 
-        System.out.println("Bogie IDs After Insertion:");
-        System.out.println(bogies);
+        System.out.println("Initial Train Formation: " + consist);
 
-        System.out.println("\nNote:");
-        System.out.println("Duplicates are automatically ignored by HashSet.");
+        // 3. Insert a Pantry Car at position 2 (index 2)
+        // LinkedList allows efficient insertion in the middle
+        consist.add(2, "Pantry Car");
+        System.out.println("After Adding Pantry Car at pos 2: " + consist);
 
-        System.out.println("\nUC3 uniqueness validation completed...");
+
+        String removedFirst = consist.removeFirst();
+        String removedLast = consist.removeLast();
+
+        System.out.println("Detached: " + removedFirst + " and " + removedLast);
+
+
+        System.out.println("Final Ordered Train Consist: " + consist);
+
+
+        System.out.println("\n--- Current Sequence ---");
+        for (int i = 0; i < consist.size(); i++) {
+            System.out.println("Position " + (i + 1) + ": " + consist.get(i));
+        }
     }
 }
